@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Form</title>
+</head>
+<body>
+<h2>Nhập thông tin Sinh viên</h2>
+
+<!-- Form để nhập thông tin -->
+<form th:action="@{/student}" th:object="${student}" method="post">
+    <label for="id">Mã sinh viên:</label>
+    <input type="text" id="id" th:field="*{id}" /><br><br>
+
+    <label for="fullName">Họ và tên:</label>
+    <input type="text" id="fullName" th:field="*{fullName}" /><br><br>
+
+    <label for="phoneNumber">Số điện thoại:</label>
+    <input type="text" id="phoneNumber" th:field="*{phoneNumber}" /><br><br>
+
+    <label for="address">Địa chỉ:</label>
+    <input type="text" id="address" th:field="*{address}" /><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+<!-- Hiển thị thông tin sau khi submit -->
+<div th:if="${student.id != null}">
+    <tr>
+        <th>
+        <h3>Thông tin sinh viên đã nhập:</h3>
+        </th>
+        <th>
+        <p>Mã sinh viên: <span th:text="${student.id}"></span></p>
+        </th>
+        <th>
+        <p>Họ và tên: <span th:text="${student.fullName}"></span></p>
+        </th>
+        <th>
+        <p>Số điện thoại: <span th:text="${student.phoneNumber}"></span></p>
+        </th>
+        <th>
+        <p>Địa chỉ: <span th:text="${student.address}"></span></p>
+        </th>
+    </tr>
+</div>
+</body>
+</html>
